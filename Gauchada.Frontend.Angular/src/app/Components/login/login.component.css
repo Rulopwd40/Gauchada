@@ -40,17 +40,6 @@ h1 {
     gap: 5px;
 }
 
-input{
-    color: #000000;
-    margin-bottom: 3%;
-    border: .5px solid rgb(194, 194, 194);
-    background-color: transparent;
-    height: 35px;
-    padding: 10px;
-    max-width: 100%;
-    transform: scale(1);
-    transition: 0.3s;
-}
 
 input:focus {
     outline: none;

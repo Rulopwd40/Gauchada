@@ -1,0 +1,64 @@
+<div class="register-container">
+    <h1 class="register-text">Register</h1>
+    <form [formGroup]="registerForm" class="form" (ngSubmit)="dataF()"> 
+      @switch (register) {
+        
+        @case (0){
+          <div class="data-form">
+            <h3>Personal Information</h3>
+            <input placeholder="Name" type="text" formControlName="name" required>
+            <input placeholder="Last Name" type="text" formControlName="lastname" required>
+            <input
+              placeholder="Birthday"
+              class="textbox-n"
+              type="text"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')"
+              id="date" formControlName="birthday">
+            <label for="gender">Gender:</label>
+            <select formControlName="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="city">City:</label>
+            <select formControlName="city">
+              <option value="1">Santa Fe</option>
+              <option value="2">BsAs</option>
+              <option value="3">Córdoba</option>
+            </select>
+          </div>
+  
+          <div class="data-form">
+            <h3>Contact Information</h3>
+            <input placeholder="Phone" type="text" formControlName="phone" required>
+            <input placeholder="Email" type="email" formControlName="email" required>
+          </div>
+        }
+        
+        @case (1){
+          <h3 class="h3-pic">We'll need a photo of you</h3>
+          <div class="photo-drop" (click)="triggerFileInput()" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+            <mat-icon class="person-icon" fontIcon="person"></mat-icon>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*">
+          </div>
+        }
+        
+        @case (2){
+          <h3>Set up your password</h3>
+          <input type="password" placeholder="Password" id="password" formControlName="password" required>
+          <input type="password" placeholder="Confirm Password" id="confirm_password" formControlName="confirmPassword" required>
+          @if (registerForm.errors?.['mismatch'] && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)) {
+            <p>Passwords do not match</p>
+          }
+        }
+        
+      }
+      <div class="btn-container">
+        <button [type]="register == 2 ? 'submit' : 'button'" 
+                class="button primary" 
+                (click)="next()">{{register == 2 ? 'Register' : 'Next' }}</button>
+        <button type="button" class="button secondary" (click)="back()">{{register==0? 'Cancel': 'Back'}}</button>
+      </div>
+    </form>
+  </div>

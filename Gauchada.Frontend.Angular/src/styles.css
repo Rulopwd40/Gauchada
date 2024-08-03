@@ -37,3 +37,30 @@
 .button.secondary:hover {
     background-color: rgba(66, 176, 255, 0.1); 
 }
+input,select{
+    color: #000000;
+    margin-bottom: 3%;
+    border: .5px solid rgb(194, 194, 194);
+    background-color: transparent;
+    height: 35px;
+    max-width: 100%;
+    transform: scale(1);
+    transition: 0.3s;
+}
+
+input{
+    padding:5px;
+}
+input:focus{
+    outline:none;
+}
+select{
+    height:47px;
+    padding:-5px;
+    padding-left: 5px;
+}
+select:focus{
+    outline:none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

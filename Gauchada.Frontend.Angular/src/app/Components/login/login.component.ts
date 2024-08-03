@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormControl,ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   standalone:true,
@@ -15,12 +16,14 @@ export class LoginComponent {
       password:new FormControl('')
       }
     );
+
+  constructor(private router:Router){};
   show= false;
   login(){
 
     }
   register(){
-
+    this.router.navigate(['register']);
     }
   showPassword(){
     this.show=!this.show;
